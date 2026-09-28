@@ -25,7 +25,7 @@ class TaskChemistry:
     task_key:
         Metadata key, e.g. "Task1", "Task2".
     task_label:
-        User-facing task name, e.g. "naproxen_amide", "phe_lf".
+        User-facing task name.
     product_name / product_mw:
         Task-specific product identity. Falls back to global product metadata if empty.
     reactants:
@@ -87,8 +87,6 @@ def parse_reactants_from_metadata(metadata: Dict[str, str]) -> Tuple[float, str,
     """
     Parse global/default chemistry metadata.
 
-    This preserves the previous API:
-        internal_volume, solvent_name, product_mw, n_reactants, reactants
     """
     internal_volume = float(metadata.get("Internal Volume (mL)", "0") or 0.0)
     solvent_name = str(metadata.get("Solvent Name", "") or "")
@@ -353,7 +351,7 @@ def encode_tasks(
 def task_order_from_metadata(metadata: Dict[str, str], *, max_tasks: int = 20) -> List[str]:
     """
     Return task labels ordered as Task1, Task2, Task3, ...
-    Useful for stable task encoding.
+
     """
     labels: List[str] = []
     for t in range(1, max_tasks + 1):
