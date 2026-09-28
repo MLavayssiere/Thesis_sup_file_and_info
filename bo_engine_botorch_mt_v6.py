@@ -544,7 +544,7 @@ def suggest_q_logei_mt(
             dtype=torch.double,
             device=bounds_t.device,
         )
-        mf_free = mf_free_flat.view(n_batches, q, n_free)  # (n_batches, q, n_free)
+        mf_free = mf_free_flat.view(n_batches, q, n_free)  
 
         if d_proc > 0:
             sobol = torch.quasirandom.SobolEngine(dimension=d_proc, scramble=True)
