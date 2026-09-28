@@ -45,8 +45,6 @@ def parse_reactants_from_metadata(metadata: Dict[str, str]) -> Tuple[float, floa
     """
     Parse global/default chemistry metadata.
 
-    Preserves the previous API:
-        internal_volume, product_mw, n_reactants, reactants
     """
     internal_volume = float(metadata.get("Internal Volume (mL)", "0") or 0.0)
     product_mw = float(metadata.get("Product MW (g/mol)", "0") or 0.0)
